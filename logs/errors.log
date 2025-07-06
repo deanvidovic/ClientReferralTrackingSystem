@@ -1,0 +1,198 @@
+2025-07-06 16:05:04,367 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 16:09:16,832 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 16:13:09,736 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 16:15:43,469 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 16:18:34,105 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 16:34:43,094 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 17:09:21,067 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 17:13:03,747 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 17:13:45,942 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 17:16:15,735 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 17:16:49,773 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 17:20:31,302 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 17:24:36,659 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 17:38:42,775 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 17:50:29,667 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 18:05:35,282 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 18:15:24,044 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 18:16:56,989 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 19:40:06,225 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 19:46:33,834 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 19:54:39,420 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 19:57:07,581 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 20:02:00,178 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 20:02:15,162 ERROR [JavaFX Application Thread] h.c.c.a.h.AdminDashboardUserHelper [AdminDashboardUserHelper.java:103] All fields are required!
+2025-07-06 20:08:34,086 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 20:10:32,964 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 20:10:43,621 ERROR [JavaFX Application Thread] h.c.u.SceneLoader [SceneLoader.java:54] Failed to load scene in class LoadException!
+javafx.fxml.LoadException: 
+/C:/Users/Dean/Documents/tvz/java/projektni/ClientReferralTrackingSystem/target/classes/hr/clientreferraltrackingsystem/user/userDashboardRewardsView.fxml
+
+	at javafx.fxml/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2714)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2684)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2555)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:3368)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:3324)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:3292)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:3264)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:3240)
+	at javafx.fxml/javafx.fxml.FXMLLoader.load(FXMLLoader.java:3233)
+	at hr.clientreferraltrackingsystem/hr.clientreferraltrackingsystem.utils.SceneLoader.switchToScene(SceneLoader.java:39)
+	at hr.clientreferraltrackingsystem/hr.clientreferraltrackingsystem.controller.menu.UserMenuController.openRewardsScreen(UserMenuController.java:41)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:77)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:275)
+	at javafx.fxml/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1854)
+	at javafx.fxml/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1724)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8792)
+	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208)
+	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:557)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:943)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:115)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:77)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:275)
+	at javafx.fxml/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2680)
+	... 63 common frames omitted
+Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.TableColumn.setCellValueFactory(javafx.util.Callback)" because "this.rewardReferredClientColumn" is null
+	at hr.clientreferraltrackingsystem/hr.clientreferraltrackingsystem.controller.user.UserDashboardRewardsController.initialize(UserDashboardRewardsController.java:63)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	... 70 common frames omitted
+2025-07-06 20:11:35,218 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 20:15:24,019 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 20:17:43,898 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 20:20:51,925 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 21:19:17,772 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 21:19:27,516 ERROR [JavaFX Application Thread] h.c.s.ChangeLogManager [ChangeLogManager.java:33] Error occurred while deserializing changes
+java.io.EOFException: null
+	at java.base/java.io.ObjectInputStream$PeekInputStream.readFully(ObjectInputStream.java:2940)
+	at java.base/java.io.ObjectInputStream$BlockDataInputStream.readShort(ObjectInputStream.java:3437)
+	at java.base/java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:973)
+	at java.base/java.io.ObjectInputStream.<init>(ObjectInputStream.java:404)
+	at hr.clientreferraltrackingsystem/hr.clientreferraltrackingsystem.serialization.ChangeLogManager.deserializeChanges(ChangeLogManager.java:30)
+	at hr.clientreferraltrackingsystem/hr.clientreferraltrackingsystem.serialization.ChangeLogManager.serializeChange(ChangeLogManager.java:18)
+	at hr.clientreferraltrackingsystem/hr.clientreferraltrackingsystem.utils.InputValidator.isDataEdited(InputValidator.java:51)
+	at hr.clientreferraltrackingsystem/hr.clientreferraltrackingsystem.controller.user.UserDashboardMyProfileController.changeData(UserDashboardMyProfileController.java:46)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:77)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at javafx.base/com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:275)
+	at javafx.fxml/com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84)
+	at javafx.fxml/javafx.fxml.FXMLLoader$MethodHandler.invoke(FXMLLoader.java:1854)
+	at javafx.fxml/javafx.fxml.FXMLLoader$ControllerMethodEventHandler.handle(FXMLLoader.java:1724)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Node.fireEvent(Node.java:8792)
+	at javafx.controls/javafx.scene.control.Button.fire(Button.java:203)
+	at javafx.controls/com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208)
+	at javafx.controls/com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247)
+	at javafx.base/com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234)
+	at javafx.base/com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191)
+	at javafx.base/com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56)
+	at javafx.base/com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74)
+	at javafx.base/com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54)
+	at javafx.base/javafx.event.Event.fireEvent(Event.java:198)
+	at javafx.graphics/javafx.scene.Scene$MouseHandler.process(Scene.java:3897)
+	at javafx.graphics/javafx.scene.Scene.processMouseEvent(Scene.java:1878)
+	at javafx.graphics/javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450)
+	at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424)
+	at javafx.graphics/com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449)
+	at javafx.graphics/com.sun.glass.ui.View.handleMouseEvent(View.java:557)
+	at javafx.graphics/com.sun.glass.ui.View.notifyMouse(View.java:943)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+2025-07-06 21:25:44,773 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 21:26:17,432 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 21:32:33,819 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 21:35:01,422 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 21:55:22,999 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 22:04:29,875 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 22:06:13,695 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 22:21:01,300 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 22:23:20,556 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 22:25:35,312 ERROR [JavaFX Application Thread] h.c.c.u.h.UserDashboardClientsHelper [UserDashboardClientsHelper.java:133] All fields are required!
+2025-07-06 22:36:59,594 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 22:38:29,690 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 23:02:03,163 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 23:26:25,310 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 23:29:05,771 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 23:30:07,118 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 23:30:24,617 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 23:31:53,245 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 23:40:36,664 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain
+2025-07-06 23:44:48,178 INFO [JavaFX Application Thread] h.c.m.ClientReferralTrackingAppMain [ClientReferralTrackingAppMain.java:20] Starting ClientReferralTrackingAppMain

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.clientreferraltrackingsystem.controller.admin.AdminDashboardRewardsController">
+    <fx:include source="../menu/adminMenu.fxml" />
+   <TableView fx:id="rewardsTable" layoutX="274.0" layoutY="88.0" prefHeight="357.0" prefWidth="1009.0">
+      <columns>
+         <TableColumn fx:id="rewardIdColumn" prefWidth="38.0" text="ID" />
+         <TableColumn fx:id="rewardReferredClientColumn" prefWidth="230.28570556640625" text="Referred client" />
+         <TableColumn fx:id="rewardDescriptionColumn" prefWidth="452.00006103515625" text="Description" />
+         <TableColumn fx:id="rewardValueColumn" prefWidth="82.28570556640625" text="Value" />
+         <TableColumn fx:id="rewardDateColumn" minWidth="0.0" prefWidth="204.5714460100446" text="Recommendation date" />
+      </columns>
+   </TableView>
+   <Label layoutX="736.0" layoutY="47.0" text="All rewards">
+      <font>
+         <Font name="Segoe UI Bold" size="15.0" />
+      </font>
+   </Label>
+   <TextField fx:id="rewardClientTextField" layoutX="431.0" layoutY="488.0" prefHeight="25.0" prefWidth="166.0" promptText="John Doe" />
+   <Label layoutX="305.0" layoutY="492.0" text="Referred client:" />
+   <TextField fx:id="rewardDescriptionTextField" layoutX="431.0" layoutY="523.0" prefHeight="25.0" prefWidth="166.0" promptText="Some description text" />
+   <Label layoutX="305.0" layoutY="527.0" text="Description:" />
+   <TextField fx:id="rewardValueFromTextField" layoutX="752.0" layoutY="488.0" prefHeight="25.0" prefWidth="166.0" promptText="10" />
+   <Label layoutX="626.0" layoutY="492.0" text="Value from:" />
+   <TextField fx:id="rewardValueToTextField" layoutX="752.0" layoutY="523.0" prefHeight="25.0" prefWidth="166.0" promptText="30" />
+   <Label layoutX="626.0" layoutY="527.0" text="Value to:" />
+   <Button layoutX="657.0" layoutY="567.0" mnemonicParsing="false" onAction="#filterRewards" prefHeight="25.0" prefWidth="225.0" text="Search" />
+   <DatePicker fx:id="rewardDatePickerFrom" layoutX="1092.0" layoutY="488.0" prefHeight="25.0" prefWidth="166.0" />
+   <Label layoutX="966.0" layoutY="492.0" text="Date from:" />
+   <Label layoutX="966.0" layoutY="527.0" text="Date to:" />
+   <DatePicker fx:id="rewardDatePickerTo" layoutX="1093.0" layoutY="523.0" prefHeight="25.0" prefWidth="166.0" />
+   <TextField fx:id="rewardDescriptionEditTextField" layoutX="431.0" layoutY="625.0" prefHeight="25.0" prefWidth="166.0" promptText="Some description text" />
+   <Label layoutX="305.0" layoutY="629.0" text="Description:" />
+   <TextField fx:id="rewardValueEditTextField" layoutX="749.0" layoutY="625.0" prefHeight="25.0" prefWidth="166.0" promptText="10" />
+   <Label layoutX="623.0" layoutY="629.0" text="Value from:" />
+   <Button layoutX="987.0" layoutY="625.0" mnemonicParsing="false" onAction="#editRewards" prefHeight="25.0" prefWidth="225.0" text="Save" />
+
+</AnchorPane>

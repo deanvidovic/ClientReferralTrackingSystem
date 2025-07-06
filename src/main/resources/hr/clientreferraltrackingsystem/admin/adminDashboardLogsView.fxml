@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.clientreferraltrackingsystem.controller.admin.AdminDashboardLogsViewController">
+    <fx:include source="../menu/adminMenu.fxml" />
+   <TableView fx:id="changesTable" layoutX="273.0" layoutY="31.0" prefHeight="641.0" prefWidth="1005.0">
+     <columns>
+       <TableColumn fx:id="logFieldChange" prefWidth="224.0" text="Field changed" />
+         <TableColumn fx:id="logOldChange" prefWidth="223.0" text="Old value" />
+         <TableColumn fx:id="logNewChange" prefWidth="188.0" text="New value" />
+         <TableColumn fx:id="logDateChange" prefWidth="181.0" text="Role" />
+       <TableColumn fx:id="logChangeRole" prefWidth="188.0" text="Date" />
+     </columns>
+   </TableView>
+
+</AnchorPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.clientreferraltrackingsystem.controller.admin.AdminDashboardClientsViewController">
+
+    <fx:include source="../menu/adminMenu.fxml" />
+   <TableView fx:id="clientsTable" layoutX="291.0" layoutY="88.0" prefHeight="351.0" prefWidth="992.0">
+      <columns>
+         <TableColumn fx:id="clientIdColumn" prefWidth="38.0" text="ID" />
+         <TableColumn fx:id="clientFirstNameColumn" prefWidth="197.71429443359375" text="First name" />
+         <TableColumn fx:id="clientLastNameColumn" prefWidth="192.5714111328125" text="Last name" />
+         <TableColumn fx:id="clientEmailColumn" prefWidth="231.4285888671875" text="E-mail" />
+         <TableColumn fx:id="clientPhoneNumberColumn" prefWidth="180.0001220703125" text="Phone number" />
+         <TableColumn fx:id="clientCreatedByColumn" prefWidth="150.28564453125" text="Created by" />
+      </columns>
+   </TableView>
+   <Label layoutX="751.0" layoutY="50.0" text="All clients">
+      <font>
+         <Font name="Segoe UI Bold" size="15.0" />
+      </font>
+   </Label>
+   <TextField fx:id="clientFirstNameTextField" layoutX="421.0" layoutY="478.0" prefHeight="25.0" prefWidth="166.0" promptText="John" />
+   <Label layoutX="295.0" layoutY="482.0" text="First name:" />
+   <TextField fx:id="clientLastNameTextField" layoutX="421.0" layoutY="513.0" prefHeight="25.0" prefWidth="166.0" promptText="Doe" />
+   <Label layoutX="295.0" layoutY="517.0" text="Last name:" />
+   <TextField fx:id="clientEmailTextField" layoutX="742.0" layoutY="478.0" prefHeight="25.0" prefWidth="166.0" promptText="john.doe@gmail.com" />
+   <Label layoutX="616.0" layoutY="482.0" text="E-mail:" />
+   <TextField fx:id="clientPhoneNumberTextField" layoutX="742.0" layoutY="513.0" prefHeight="25.0" prefWidth="166.0" promptText="0992959503" />
+   <Label layoutX="616.0" layoutY="517.0" text="Phone number:" />
+   <Button layoutX="1024.0" layoutY="599.0" mnemonicParsing="false" onAction="#filterClients" prefHeight="25.0" prefWidth="225.0" text="Search" />
+   <Label layoutX="958.0" layoutY="482.0" text="Created by:" />
+   <ComboBox fx:id="createdByComboBox" layoutX="1083.0" layoutY="478.0" prefHeight="25.0" prefWidth="166.0" />
+
+</AnchorPane>

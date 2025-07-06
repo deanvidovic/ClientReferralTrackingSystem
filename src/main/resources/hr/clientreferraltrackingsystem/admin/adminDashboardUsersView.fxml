@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hr.clientreferraltrackingsystem.controller.admin.AdminDashboardUsersController">
+    <fx:include source="../menu/adminMenu.fxml" />
+   <TableView fx:id="usersTable" layoutX="271.0" layoutY="68.0" prefHeight="351.0" prefWidth="992.0">
+     <columns>
+       <TableColumn fx:id="userIdColumn" prefWidth="38.0" text="ID" />
+       <TableColumn fx:id="userFirstNameColumn" prefWidth="176.0" text="First name" />
+         <TableColumn fx:id="userLastNameColumn" prefWidth="148.0" text="Last name" />
+         <TableColumn fx:id="userEmailColumn" prefWidth="174.0" text="E-mail" />
+         <TableColumn fx:id="userPhoneNumberColumn" prefWidth="148.0" text="Phone number" />
+         <TableColumn fx:id="userUsernameColumn" prefWidth="145.0" text="Username" />
+         <TableColumn fx:id="userRoleColumn" prefWidth="162.0" text="Role" />
+     </columns>
+   </TableView>
+   <Label layoutX="748.0" layoutY="32.0" text="Users">
+      <font>
+         <Font name="Segoe UI Bold" size="15.0" />
+      </font>
+   </Label>
+   <TextField fx:id="userFirstNameTextField" layoutX="401.0" layoutY="458.0" prefHeight="25.0" prefWidth="166.0" promptText="John" />
+   <Label layoutX="275.0" layoutY="462.0" text="First name:" />
+   <TextField fx:id="userLastNameTextField" layoutX="401.0" layoutY="493.0" prefHeight="25.0" prefWidth="166.0" promptText="Doe" />
+   <Label layoutX="275.0" layoutY="497.0" text="Last name:" />
+   <TextField fx:id="userEmailTextField" layoutX="722.0" layoutY="458.0" prefHeight="25.0" prefWidth="166.0" promptText="john.doe@gmail.com" />
+   <Label layoutX="596.0" layoutY="462.0" text="E-mail:" />
+   <TextField fx:id="userPhoneNumberTextField" layoutX="722.0" layoutY="493.0" prefHeight="25.0" prefWidth="166.0" promptText="0992959503" />
+   <Label layoutX="596.0" layoutY="497.0" text="Phone number:" />
+   <TextField fx:id="userUsernameTextField" layoutX="1045.0" layoutY="458.0" prefHeight="25.0" prefWidth="166.0" promptText="john_" />
+   <Label layoutX="919.0" layoutY="462.0" text="Username:" />
+   <Label layoutX="275.0" layoutY="565.0" text="Password:" />
+   <ComboBox fx:id="userRoleComboBox" layoutX="1045.0" layoutY="493.0" prefHeight="25.0" prefWidth="166.0" />
+   <Label layoutX="919.0" layoutY="497.0" text="Role:" />
+   <Button layoutX="975.0" layoutY="596.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="225.0" text="Save" />
+   <PasswordField fx:id="userPasswordTextField" layoutX="401.0" layoutY="561.0" prefHeight="25.0" prefWidth="166.0" promptText="********" />
+   <Label layoutX="275.0" layoutY="600.0" text="Re-password:" />
+   <PasswordField fx:id="userRePasswordTextField" layoutX="401.0" layoutY="596.0" prefHeight="25.0" prefWidth="166.0" promptText="********" />
+   <Button layoutX="976.0" layoutY="633.0" mnemonicParsing="false" onAction="#filterUsers" prefHeight="25.0" prefWidth="225.0" text="Search" />
+</AnchorPane>
