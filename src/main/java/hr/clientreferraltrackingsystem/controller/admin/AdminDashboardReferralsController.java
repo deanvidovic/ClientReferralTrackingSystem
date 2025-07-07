@@ -18,12 +18,16 @@ import javafx.util.Duration;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
+/**
+ * Controller class for managing referrals in the admin dashboard.
+ * <p>
+ * This class handles displaying all referrals, filtering them by various criteria,
+ * approving or rejecting them, and showing the most recent referral in real time.
+ */
 public class AdminDashboardReferralsController {
+
     @FXML private TableView<Referral> referralsTable;
     @FXML private TableColumn<Referral, String> referralClientIdColumn;
     @FXML private TableColumn<Referral, String> referralFirstNameColumn;
@@ -33,43 +37,48 @@ public class AdminDashboardReferralsController {
     @FXML private TableColumn<Referral, String> referralStatusColumn;
     @FXML private TableColumn<Referral, String> referralDateColumn;
     @FXML private TableColumn<Referral, String> referralReferredByColumn;
+
     @FXML private TextField referralFirstNameTextField;
     @FXML private TextField referralLastNameTextField;
     @FXML private TextField referralEmailTextField;
     @FXML private TextField referralPhoneNumberTextField;
+
     @FXML private ComboBox<ReferralStatus> referralStatusComboBox;
     @FXML private DatePicker referralDatePickerFrom;
     @FXML private DatePicker referralDatePickerTo;
     @FXML private ComboBox<String> referralReferredByComboBox;
+
     @FXML private Label latestReferral;
 
     private final ReferralDatabaseRepository referralDatabaseRepository = new ReferralDatabaseRepository();
     private final UserDatabaseRepository userDatabaseRepository = new UserDatabaseRepository();
     private Referral selectedReferral;
 
+    /**
+     * Initializes the controller after the FXML fields are loaded.
+     * Sets up the table columns, filters, and real-time display of the latest referral.
+     */
     public void initialize() {
         referralClientIdColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(String.valueOf(cellData.getValue().getId())));
         referralFirstNameColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getRefferedClient().getFirstName())));
+                new SimpleStringProperty(cellData.getValue().getRefferedClient().getFirstName()));
         referralLastNameColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getRefferedClient().getLastName())));
+                new SimpleStringProperty(cellData.getValue().getRefferedClient().getLastName()));
         referralEmailColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getRefferedClient().getEmail())));
+                new SimpleStringProperty(cellData.getValue().getRefferedClient().getEmail()));
         referralPhoneNumberColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getRefferedClient().getPhoneNumber())));
+                new SimpleStringProperty(cellData.getValue().getRefferedClient().getPhoneNumber()));
         referralStatusColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getReferralStatus())));
+                new SimpleStringProperty(cellData.getValue().getReferralStatus().toString()));
         referralDateColumn.setCellValueFactory(cellData -> {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy.");
-            String formattedDate = cellData.getValue().getRefferalDate().format(formatter);
-            return new SimpleStringProperty(formattedDate);
+            return new SimpleStringProperty(cellData.getValue().getRefferalDate().format(formatter));
         });
         referralReferredByColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getRefferer().getUserFullName())));
+                new SimpleStringProperty(cellData.getValue().getRefferer().getUserFullName()));
 
-        List<String> allUsers = userDatabaseRepository.findAll()
-                .stream()
+        List<String> allUsers = userDatabaseRepository.findAll().stream()
                 .filter(u -> u.getRole() != Role.ADMIN)
                 .map(User::getUserFullName)
                 .toList();
@@ -77,67 +86,100 @@ public class AdminDashboardReferralsController {
         referralStatusComboBox.setItems(FXCollections.observableArrayList(ReferralStatus.values()));
 
         showReferrals();
+        setupRowContextMenu();
+        setupLatestReferralTimer();
+    }
 
+    /**
+     * Sets up a context menu on each table row to allow approving or rejecting referrals.
+     */
+    private void setupRowContextMenu() {
         referralsTable.setRowFactory(tv -> {
             TableRow<Referral> row = new TableRow<>();
-
             ContextMenu contextMenu = new ContextMenu();
-            MenuItem approveRecommendation = new MenuItem("Approve");
-            MenuItem rejectRecommendation = new MenuItem("Reject");
 
-            approveRecommendation.setOnAction(event -> {
+            MenuItem approveItem = new MenuItem("Approve");
+            approveItem.setOnAction(event -> {
                 Referral referral = row.getItem();
                 if (referral != null) {
                     selectedReferral = referral;
                     approveReferral(selectedReferral);
                 }
             });
-            rejectRecommendation.setOnAction(event -> {
+
+            MenuItem rejectItem = new MenuItem("Reject");
+            rejectItem.setOnAction(event -> {
                 Referral referral = row.getItem();
                 if (referral != null) {
                     selectedReferral = referral;
                     rejectReferral(selectedReferral);
                 }
             });
-            contextMenu.getItems().addAll(approveRecommendation, rejectRecommendation);
+
+            contextMenu.getItems().addAll(approveItem, rejectItem);
+
             row.setOnContextMenuRequested(event -> {
                 if (!row.isEmpty()) {
                     contextMenu.show(row, event.getScreenX(), event.getScreenY());
                 }
             });
+
             contextMenu.setOnHidden(event -> referralsTable.getSelectionModel().clearSelection());
             return row;
         });
-
-        Timeline latestReferralTimeline = new Timeline(new KeyFrame(Duration.ZERO, event -> {
-            Optional<Referral> latestReferralOpt = referralDatabaseRepository.findLatestReferralFromDb();
-            if (latestReferralOpt.isPresent()) {
-                latestReferral.setText(latestReferralOpt.get().threadPrint());
-            }
-        }), new KeyFrame(Duration.seconds(1)));
-        latestReferralTimeline.setCycleCount(Animation.INDEFINITE);
-        latestReferralTimeline.play();
-
     }
 
+    /**
+     * Starts a timeline that updates the latest referral every second.
+     */
+    private void setupLatestReferralTimer() {
+        Timeline latestReferralTimeline = new Timeline(
+                new KeyFrame(Duration.ZERO, event -> {
+                    Optional<Referral> latestReferralOpt = referralDatabaseRepository.findLatestReferralFromDb();
+                    latestReferralOpt.ifPresent(r -> latestReferral.setText(r.threadPrint()));
+                }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        latestReferralTimeline.setCycleCount(Animation.INDEFINITE);
+        latestReferralTimeline.play();
+    }
+
+    /**
+     * Approves a given referral using the referral helper.
+     *
+     * @param referral the referral to approve
+     */
     public void approveReferral(Referral referral) {
         AdminDashboardReferralHelper.handleApproveReferral(referral, referralDatabaseRepository);
         showReferrals();
         referralsTable.refresh();
     }
 
+    /**
+     * Rejects a given referral using the referral helper.
+     *
+     * @param referral the referral to reject
+     */
     public void rejectReferral(Referral referral) {
         AdminDashboardReferralHelper.handleRejectReferral(referral, referralDatabaseRepository);
         showReferrals();
         referralsTable.refresh();
     }
 
+    /**
+     * Loads and displays all referrals sorted by referral date.
+     */
     private void showReferrals() {
         Set<Referral> referrals = referralDatabaseRepository.findAll();
-        List<Referral> referralList = referrals.stream().sorted(Comparator.comparing(Referral::getRefferalDate)).toList();
+        List<Referral> referralList = referrals.stream()
+                .sorted(Comparator.comparing(Referral::getRefferalDate))
+                .toList();
         referralsTable.setItems(FXCollections.observableArrayList(referralList));
     }
 
+    /**
+     * Clears all filter input fields.
+     */
     public void clearForm() {
         referralFirstNameTextField.clear();
         referralLastNameTextField.clear();
@@ -149,8 +191,13 @@ public class AdminDashboardReferralsController {
         referralReferredByComboBox.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Filters the referral list based on the input fields and selection criteria.
+     * Applies filtering by first name, last name, email, phone, status, date range, and referrer.
+     */
     public void filterReferrals() {
         List<Referral> referralList = referralDatabaseRepository.findAll().stream().toList();
+
         String firstNameFilter = referralFirstNameTextField.getText().trim();
         String lastNameFilter = referralLastNameTextField.getText().trim();
         String emailFilter = referralEmailTextField.getText().trim();
@@ -182,7 +229,7 @@ public class AdminDashboardReferralsController {
         }
         if (statusFilter != null) {
             referralList = referralList.stream()
-                    .filter(r -> r.getReferralStatus().toString().toLowerCase().contains(statusFilter.toString().toLowerCase()))
+                    .filter(r -> r.getReferralStatus().equals(statusFilter))
                     .toList();
         }
         if (dateFrom != null) {
@@ -200,7 +247,11 @@ public class AdminDashboardReferralsController {
                     .filter(r -> r.getRefferer().getUserFullName().equalsIgnoreCase(referredByFilter))
                     .toList();
         }
-        referralList = referralList.stream().sorted(Comparator.comparing(Referral::getRefferalDate)).toList();
+
+        referralList = referralList.stream()
+                .sorted(Comparator.comparing(Referral::getRefferalDate))
+                .toList();
+
         referralsTable.setItems(FXCollections.observableList(referralList));
         clearForm();
     }

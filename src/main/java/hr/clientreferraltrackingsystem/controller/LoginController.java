@@ -37,7 +37,7 @@ public class LoginController {
             Optional<User> user = authService.login(username, password);
 
             if (user.isPresent()) {
-                SessionManager.getInstance().setLoggedUser(user.get());
+                SessionManager.instance.setLoggedUser(user.get());
 
                 Role role = user.get().getRole();
                 SceneLoader.loadDashboard(role);

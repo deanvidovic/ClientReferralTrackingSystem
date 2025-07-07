@@ -15,9 +15,24 @@ import java.util.List;
 import java.util.Set;
 
 
+/**
+ * Controller class for managing users in the admin dashboard.
+ * Provides functionalities to list, filter, create, edit, and delete users.
+ * Interacts with the {@link UserDatabaseRepository} to persist changes.
+ * Also connects with the helper class {@link AdminDashboardUserHelper} to handle business logic.
+ *
+ * <p>This class is connected to a JavaFX UI and uses {@code @FXML} annotations
+ * to link UI elements to the controller.</p>
+ *
+ */
 public class AdminDashboardUsersController {
+
+    /**
+     * Table displaying users.
+     */
     @FXML
     private TableView<User> usersTable;
+
     @FXML
     private TableColumn<User, String> userIdColumn;
     @FXML
@@ -54,21 +69,26 @@ public class AdminDashboardUsersController {
     private final UserDatabaseRepository userDatabaseRepository = new UserDatabaseRepository();
     private User selectedUser;
 
+    /**
+     * Initializes the controller, sets up table columns, loads users,
+     * and configures selection and context menu behavior.
+     */
     public void initialize() {
         userIdColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(String.valueOf(cellData.getValue().getId())));
         userFirstNameColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getFirstName())));
+                new SimpleStringProperty(cellData.getValue().getFirstName()));
         userLastNameColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getLastName())));
+                new SimpleStringProperty(cellData.getValue().getLastName()));
         userEmailColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getEmail())));
+                new SimpleStringProperty(cellData.getValue().getEmail()));
         userPhoneNumberColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getPhoneNumber())));
+                new SimpleStringProperty(cellData.getValue().getPhoneNumber()));
         userUsernameColumn.setCellValueFactory(cellData ->
-                new SimpleStringProperty(String.valueOf(cellData.getValue().getUsername())));
+                new SimpleStringProperty(cellData.getValue().getUsername()));
         userRoleColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(String.valueOf(cellData.getValue().getRole())));
+
         userRoleComboBox.setItems(FXCollections.observableArrayList(Role.values()));
 
         showUsers();
@@ -77,19 +97,17 @@ public class AdminDashboardUsersController {
             User user = usersTable.getSelectionModel().getSelectedItem();
             if (user != null) {
                 selectedUser = user;
-                userFirstNameTextField.setText(selectedUser.getFirstName());
-                userLastNameTextField.setText(selectedUser.getLastName());
-                userEmailTextField.setText(selectedUser.getEmail());
-                userPhoneNumberTextField.setText(selectedUser.getPhoneNumber());
-                userUsernameTextField.setText(selectedUser.getUsername());
-                userRoleComboBox.setValue(selectedUser.getRole());
+                userFirstNameTextField.setText(user.getFirstName());
+                userLastNameTextField.setText(user.getLastName());
+                userEmailTextField.setText(user.getEmail());
+                userPhoneNumberTextField.setText(user.getPhoneNumber());
+                userUsernameTextField.setText(user.getUsername());
+                userRoleComboBox.setValue(user.getRole());
             }
         });
 
-
         usersTable.setRowFactory(tv -> {
             TableRow<User> row = new TableRow<>();
-
             ContextMenu contextMenu = new ContextMenu();
             MenuItem deleteItem = new MenuItem("Delete");
 
@@ -117,6 +135,9 @@ public class AdminDashboardUsersController {
         });
     }
 
+    /**
+     * Filters the users displayed in the table based on input form fields.
+     */
     public void filterUsers() {
         List<User> userList = userDatabaseRepository.findAll().stream()
                 .filter(u -> u.getRole() == Role.USER)
@@ -168,7 +189,10 @@ public class AdminDashboardUsersController {
         usersTable.setItems(FXCollections.observableList(userList));
     }
 
-
+    /**
+     * Saves a new user or updates an existing one using form input fields.
+     * Uses the {@link AdminDashboardUserHelper} to handle business logic and validation.
+     */
     public void save() {
         AdminUsersFormData formData = new AdminUsersFormData(
                 userFirstNameTextField.getText().trim(), userLastNameTextField.getText().trim(),
@@ -184,8 +208,13 @@ public class AdminDashboardUsersController {
         usersTable.getSelectionModel().clearSelection();
     }
 
+    /**
+     * Deletes the specified user and refreshes the table and form.
+     *
+     * @param user The user to be deleted.
+     */
     public void delete(User user) {
-        hr.clientreferraltrackingsystem.controller.admin.helper.AdminDashboardUserHelper.handleDelete(
+        AdminDashboardUserHelper.handleDelete(
                 user,
                 userDatabaseRepository,
                 () -> {
@@ -196,6 +225,9 @@ public class AdminDashboardUsersController {
         );
     }
 
+    /**
+     * Clears all form input fields and resets the selected user.
+     */
     private void clearForm() {
         userFirstNameTextField.clear();
         userLastNameTextField.clear();
@@ -208,6 +240,10 @@ public class AdminDashboardUsersController {
         selectedUser = null;
     }
 
+    /**
+     * Loads all users with the role {@code USER} from the repository
+     * and displays them in the table, sorted by last name.
+     */
     private void showUsers() {
         Set<User> users = userDatabaseRepository.findAll();
         List<User> userList = users.stream()

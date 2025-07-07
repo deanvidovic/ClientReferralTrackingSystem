@@ -18,40 +18,61 @@ import java.util.List;
 
 import static hr.clientreferraltrackingsystem.utils.Message.showAlert;
 
+/**
+ * Controller for the Admin Dashboard Rewards screen.
+ * Handles display, filtering, and editing of rewards associated with referred clients.
+ */
 public class AdminDashboardRewardsController {
+
     @FXML
     private TableView<Reward> rewardsTable;
+
     @FXML
     private TableColumn<Reward, String> rewardIdColumn;
+
     @FXML
     private TableColumn<Reward, String> rewardReferredClientColumn;
+
     @FXML
     private TableColumn<Reward, String> rewardDescriptionColumn;
+
     @FXML
     private TableColumn<Reward, String> rewardValueColumn;
+
     @FXML
     private TableColumn<Reward, String> rewardDateColumn;
 
     @FXML
     private TextField rewardClientTextField;
+
     @FXML
     private TextField rewardDescriptionTextField;
+
     @FXML
     private TextField rewardValueFromTextField;
+
     @FXML
     private TextField rewardValueToTextField;
+
     @FXML
     private DatePicker rewardDatePickerFrom;
+
     @FXML
     private DatePicker rewardDatePickerTo;
+
     @FXML
     private TextField rewardDescriptionEditTextField;
+
     @FXML
     private TextField rewardValueEditTextField;
 
     private final AbstractRepository<Reward> rewardRepository = new RewardRepository<>();
     private Reward selectedReward;
 
+    /**
+     * Initializes the controller after FXML loading.
+     * Sets up column bindings, selection listener, and loads initial reward data.
+     */
     public void initialize() {
         rewardIdColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(String.valueOf(cellData.getValue().getId())));
@@ -79,6 +100,10 @@ public class AdminDashboardRewardsController {
         showRewards();
     }
 
+    /**
+     * Edits the currently selected reward based on input values.
+     * Validates the inputs and applies changes via helper method.
+     */
     public void editRewards() {
         String description = rewardDescriptionEditTextField.getText();
         String valueText = rewardValueEditTextField.getText().trim();
@@ -99,7 +124,6 @@ public class AdminDashboardRewardsController {
         }
 
         BigDecimal value = new BigDecimal(valueText);
-
         AdminDashboardRewardsHelper.handleEdit(description, value, selectedReward);
 
         clearForm();
@@ -108,13 +132,22 @@ public class AdminDashboardRewardsController {
         rewardsTable.getSelectionModel().clearSelection();
     }
 
-
+    /**
+     * Loads and displays all rewards sorted by reward date.
+     */
     private void showRewards() {
         List<Reward> rewards = rewardRepository.findAll();
-        List<Reward> referralList = rewards.stream().sorted(Comparator.comparing(Reward::getRewardDate)).toList();
+        List<Reward> referralList = rewards.stream()
+                .sorted(Comparator.comparing(Reward::getRewardDate))
+                .toList();
         rewardsTable.setItems(FXCollections.observableArrayList(referralList));
     }
 
+    /**
+     * Filters rewards based on user-provided criteria including
+     * client name, description, value range, and date range.
+     * Displays the filtered list in the table.
+     */
     public void filterRewards() {
         List<Reward> rewardList = rewardRepository.findAll();
 
@@ -123,8 +156,10 @@ public class AdminDashboardRewardsController {
         String valueFromText = rewardValueFromTextField.getText().trim();
         String valueToText = rewardValueToTextField.getText().trim();
 
-        LocalDateTime dateFrom = rewardDatePickerFrom.getValue() != null ? rewardDatePickerFrom.getValue().atStartOfDay() : null;
-        LocalDateTime dateTo = rewardDatePickerTo.getValue() != null ? rewardDatePickerTo.getValue().atStartOfDay() : null;
+        LocalDateTime dateFrom = rewardDatePickerFrom.getValue() != null
+                ? rewardDatePickerFrom.getValue().atStartOfDay() : null;
+        LocalDateTime dateTo = rewardDatePickerTo.getValue() != null
+                ? rewardDatePickerTo.getValue().atStartOfDay() : null;
 
         rewardList = AdminDashboardRewardsHelper.filterByClientName(rewardList, clientNameFilter);
         rewardList = AdminDashboardRewardsHelper.filterByDescription(rewardList, descriptionFilter);
@@ -141,7 +176,9 @@ public class AdminDashboardRewardsController {
         rewardsTable.setItems(FXCollections.observableArrayList(rewardList));
     }
 
-
+    /**
+     * Clears all input and edit fields in the form.
+     */
     private void clearForm() {
         rewardClientTextField.clear();
         rewardDescriptionTextField.clear();

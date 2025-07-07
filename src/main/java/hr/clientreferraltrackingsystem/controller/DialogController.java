@@ -46,7 +46,7 @@ public class DialogController {
 
             ((Stage) descriptionField.getScene().getWindow()).close();
 
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException _) {
             Message.showAlert(Alert.AlertType.ERROR, "Invalid input", null, "Please enter a valid number for value.");
         }
     }

@@ -35,7 +35,7 @@
         }
 
         public void changeData() {
-            User currUser = SessionManager.getInstance().getLoggedUser();
+            User currUser = SessionManager.instance.getLoggedUser();
             UserFormData userFormData = new UserFormData(
                     usernameTextField.getText().trim(), emailTextField.getText().trim(),
                     firstNameTextField.getText().trim(), lastNameTextField.getText().trim(),
@@ -43,26 +43,26 @@
                     rePasswordPasswordField.getText().trim()
             );
 
-            InputValidator.isDataEdited("User: username", currUser.getUsername(), userFormData.username());
-            InputValidator.isDataEdited("User: email", currUser.getEmail(), userFormData.email());
-            InputValidator.isDataEdited("User: firstName", currUser.getFirstName(), userFormData.firstName());
-            InputValidator.isDataEdited("User: lastName", currUser.getLastName(), userFormData.lastName());
-            InputValidator.isDataEdited("User: phoneNumber", currUser.getPhoneNumber(), userFormData.phoneNumber());
+            InputValidator.serializeSave("User: username", currUser.getUsername(), userFormData.username());
+            InputValidator.serializeSave("User: email", currUser.getEmail(), userFormData.email());
+            InputValidator.serializeSave("User: firstName", currUser.getFirstName(), userFormData.firstName());
+            InputValidator.serializeSave("User: lastName", currUser.getLastName(), userFormData.lastName());
+            InputValidator.serializeSave("User: phoneNumber", currUser.getPhoneNumber(), userFormData.phoneNumber());
 
             if (!userFormData.password().isBlank()) {
                 String hashedNewPassword = AuthService.hashPassword(userFormData.password());
-                InputValidator.isDataEdited("password", currUser.getPassword(), hashedNewPassword);
+                InputValidator.serializeSave("password", currUser.getPassword(), hashedNewPassword);
             }
 
             UserDashboardMyProfileHelper.changeDataHandle(userFormData, userDatabaseRepository, this::setFields);
         }
 
         public void setFields() {
-            usernameTextField.setText(SessionManager.getInstance().getLoggedUser().getUsername());
-            emailTextField.setText(SessionManager.getInstance().getLoggedUser().getEmail());
-            firstNameTextField.setText(SessionManager.getInstance().getLoggedUser().getFirstName());
-            lastNameTextField.setText(SessionManager.getInstance().getLoggedUser().getLastName());
-            phoneNumberTextField.setText(SessionManager.getInstance().getLoggedUser().getPhoneNumber());
+            usernameTextField.setText(SessionManager.instance.getLoggedUser().getUsername());
+            emailTextField.setText(SessionManager.instance.getLoggedUser().getEmail());
+            firstNameTextField.setText(SessionManager.instance.getLoggedUser().getFirstName());
+            lastNameTextField.setText(SessionManager.instance.getLoggedUser().getLastName());
+            phoneNumberTextField.setText(SessionManager.instance.getLoggedUser().getPhoneNumber());
         }
 
     }

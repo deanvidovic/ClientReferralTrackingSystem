@@ -3,16 +3,18 @@ package hr.clientreferraltrackingsystem.service;
 import hr.clientreferraltrackingsystem.model.User;
 
 public class SessionManager {
-    private static SessionManager instance;
+    public static final SessionManager instance = getSingletonInstance();
+    private static SessionManager singletonInstance;
     private User loggedUser;
 
     private SessionManager() {}
 
-    public static SessionManager getInstance() {
-        if (instance == null) {
-            instance = new SessionManager();
+    private static SessionManager getSingletonInstance() {
+        if (singletonInstance == null) {
+            singletonInstance = new SessionManager();
         }
-        return instance;
+
+        return new SessionManager();
     }
 
     public void setLoggedUser(User loggedUser) {

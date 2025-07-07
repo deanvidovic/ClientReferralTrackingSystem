@@ -15,7 +15,15 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Controller class for the admin dashboard clients view.
+ * <p>
+ * Responsible for displaying, filtering, and deleting clients
+ * in the JavaFX TableView component. Uses repositories for
+ * retrieving data from the database.
+ */
 public class AdminDashboardClientsViewController {
+
     @FXML
     private TableView<Client> clientsTable;
     @FXML
@@ -47,6 +55,10 @@ public class AdminDashboardClientsViewController {
     private final UserDatabaseRepository userDatabaseRepository =
             new UserDatabaseRepository();
 
+    /**
+     * Initializes the controller by setting up table columns,
+     * loading all non-recommended clients, and configuring row actions.
+     */
     public void initialize() {
         clientIdColumn.setCellValueFactory(cellData ->
                 new SimpleStringProperty(String.valueOf(cellData.getValue().getId())));
@@ -100,6 +112,11 @@ public class AdminDashboardClientsViewController {
         });
     }
 
+    /**
+     * Filters the clients displayed in the table based on the entered
+     * filter criteria in the form fields. Only non-recommended clients
+     * are considered.
+     */
     public void filterClients() {
         List<Client> clientsList = clientsDatabaseRepository
                 .findAll().stream()
@@ -111,7 +128,6 @@ public class AdminDashboardClientsViewController {
         String emailFilter = clientEmailTextField.getText().trim();
         String phoneFilter = clientPhoneNumberTextField.getText().trim();
         String createdByFilter = createdByComboBox.getValue();
-
 
         if (!firstNameFilter.isEmpty()) {
             clientsList = clientsList.stream()
@@ -151,7 +167,11 @@ public class AdminDashboardClientsViewController {
         clearForm();
     }
 
-
+    /**
+     * Deletes a client using the helper method and refreshes the UI after deletion.
+     *
+     * @param client the client to delete
+     */
     public void delete(Client client) {
         AdminDashboardClientsHelper.handleDelete(
                 client,
@@ -164,6 +184,9 @@ public class AdminDashboardClientsViewController {
         );
     }
 
+    /**
+     * Clears all input fields and the selected value in the combo box.
+     */
     private void clearForm() {
         clientFirstNameTextField.clear();
         clientLastNameTextField.clear();
@@ -172,6 +195,10 @@ public class AdminDashboardClientsViewController {
         createdByComboBox.setValue(null);
     }
 
+    /**
+     * Loads all clients that are not currently recommended and displays
+     * them sorted by last name in the table.
+     */
     private void showClients() {
         Set<Client> clients = clientsDatabaseRepository.findAll();
         List<Client> clientsList = clients.stream()

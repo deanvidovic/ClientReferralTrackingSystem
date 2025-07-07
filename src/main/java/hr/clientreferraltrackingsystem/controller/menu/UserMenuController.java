@@ -12,15 +12,15 @@ public class UserMenuController {
 
 
     public void initialize() {
-        userFirstNameLabel.setText(SessionManager.getInstance().getLoggedUser().getFirstName()
-                + " " + SessionManager.getInstance().getLoggedUser().getLastName());
+        userFirstNameLabel.setText(SessionManager.instance.getLoggedUser().getFirstName()
+                + " " + SessionManager.instance.getLoggedUser().getLastName());
     }
 
     public void logOut() {
         boolean confirmed = Message.showConfirmation("Log out", "Please confirm", "Are you sure you want to log out?");
 
         if (confirmed) {
-            SessionManager.getInstance().setLoggedUser(null);
+            SessionManager.instance.setLoggedUser(null);
             SceneLoader.switchToScene("/hr/clientreferraltrackingsystem/login/loginView.fxml");
         }
     }

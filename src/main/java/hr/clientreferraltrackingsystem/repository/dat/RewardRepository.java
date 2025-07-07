@@ -16,6 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * Repository class for managing Reward entities persisted in a text file.
+ *
+ * @param <T> type parameter extending Reward
+ */
 public class RewardRepository<T extends Reward> extends AbstractRepository<T> {
     private static final String REWARDS_FILE_PATH = "dat/rewards.txt";
     private static final Integer REWARDS_LINES = 5;
@@ -23,6 +28,12 @@ public class RewardRepository<T extends Reward> extends AbstractRepository<T> {
     private static final Logger log = LoggerFactory.getLogger(RewardRepository.class);
     private final ReferralDatabaseRepository referralDatabaseRepository = new ReferralDatabaseRepository();
 
+    /**
+     * Finds all rewards where the referral's referrer matches the given id.
+     *
+     * @param id the id of the referrer
+     * @return list of rewards associated with the referrer
+     */
     @Override
     public List<T> findAllById(Integer id) {
         return findAll().stream()
@@ -30,6 +41,11 @@ public class RewardRepository<T extends Reward> extends AbstractRepository<T> {
                 .toList();
     }
 
+    /**
+     * Reads all rewards from the file and returns them as a list.
+     *
+     * @return list of all rewards
+     */
     @Override
     public List<T> findAll() {
         List<T> rewards = new ArrayList<>();
@@ -37,7 +53,7 @@ public class RewardRepository<T extends Reward> extends AbstractRepository<T> {
         try (Stream<String> stream = Files.lines(Path.of(REWARDS_FILE_PATH))) {
             List<String> fileRows = stream.toList();
 
-            for (int i = 0; i < fileRows.size(); i += 5) {
+            for (int i = 0; i < fileRows.size(); i += REWARDS_LINES) {
                 int id = Integer.parseInt(fileRows.get(i));
                 int referralId = Integer.parseInt(fileRows.get(i + 1));
                 String description = fileRows.get(i + 2);
@@ -64,7 +80,11 @@ public class RewardRepository<T extends Reward> extends AbstractRepository<T> {
         return rewards;
     }
 
-
+    /**
+     * Saves a reward entity to the file, assigning it a new ID.
+     *
+     * @param entity the reward to save
+     */
     @Override
     public void save(T entity) {
         try {
@@ -88,6 +108,11 @@ public class RewardRepository<T extends Reward> extends AbstractRepository<T> {
         }
     }
 
+    /**
+     * Updates an existing reward in the file.
+     *
+     * @param entity the reward with updated data
+     */
     @Override
     public void update(T entity) {
         List<T> allRewards = findAll();
@@ -112,8 +137,11 @@ public class RewardRepository<T extends Reward> extends AbstractRepository<T> {
         }
     }
 
-
-
+    /**
+     * Deletes a reward from the file.
+     *
+     * @param entity the reward to delete
+     */
     @Override
     public void delete(T entity) {
         List<T> allRewards = findAll();
@@ -138,8 +166,12 @@ public class RewardRepository<T extends Reward> extends AbstractRepository<T> {
         }
     }
 
-
-
+    /**
+     * Generates the next available ID based on the existing file content.
+     *
+     * @param lines lines read from the rewards file
+     * @return next ID to assign
+     */
     public static int generateNextId(List<String> lines) {
         int maxId = 0;
         for (int i = 0; i < lines.size(); i += REWARDS_LINES) {

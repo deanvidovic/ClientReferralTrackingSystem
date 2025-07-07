@@ -2,8 +2,6 @@ package hr.clientreferraltrackingsystem.controller.user;
 
 import hr.clientreferraltrackingsystem.controller.admin.helper.AdminDashboardRewardsHelper;
 import hr.clientreferraltrackingsystem.model.Reward;
-import hr.clientreferraltrackingsystem.repository.dat.AbstractRepository;
-import hr.clientreferraltrackingsystem.repository.dat.RewardRepository;
 import hr.clientreferraltrackingsystem.service.SessionManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -75,13 +73,13 @@ public class UserDashboardRewardsController {
 
 
     private void showRewards() {
-        List<Reward> rewards = SessionManager.getInstance().getLoggedUser().getRewards();
+        List<Reward> rewards = SessionManager.instance.getLoggedUser().getRewards();
         List<Reward> referralList = rewards.stream().sorted(Comparator.comparing(Reward::getRewardDate)).toList();
         rewardsTable.setItems(FXCollections.observableArrayList(referralList));
     }
 
     public void filterRewards() {
-        List<Reward> rewardList = SessionManager.getInstance().getLoggedUser().getRewards();
+        List<Reward> rewardList = SessionManager.instance.getLoggedUser().getRewards();
 
         String clientNameFilter = rewardClientTextField.getText().trim();
         String descriptionFilter = rewardDescriptionTextField.getText().trim();

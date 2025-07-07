@@ -4,6 +4,7 @@ import hr.clientreferraltrackingsystem.controller.user.dto.ReferredClientsFormDa
 import hr.clientreferraltrackingsystem.enumeration.ReferralStatus;
 import hr.clientreferraltrackingsystem.exception.EmptyFieldsException;
 import hr.clientreferraltrackingsystem.exception.InvalidEmailException;
+import hr.clientreferraltrackingsystem.generics.PairData;
 import hr.clientreferraltrackingsystem.model.Referral;
 import hr.clientreferraltrackingsystem.model.Client;
 import hr.clientreferraltrackingsystem.repository.database.ReferralDatabaseRepository;
@@ -16,6 +17,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class UserDashboardClientsHelper {
     private static final Logger log = LoggerFactory.getLogger(UserDashboardClientsHelper.class);
@@ -41,29 +43,29 @@ public class UserDashboardClientsHelper {
             if (selectedClient != null) {
                 Client currClient = selectedClient;
 
-                InputValidator.isDataEdited("Client - edit: firstName", currClient.getFirstName(), clientFormData.firstName());
-                InputValidator.isDataEdited("Client - edit: lastName", currClient.getLastName(), clientFormData.lastName());
-                InputValidator.isDataEdited("Client - edit: email", currClient.getEmail(), clientFormData.email());
-                InputValidator.isDataEdited("Client - edit: phoneNumber", currClient.getPhoneNumber(), clientFormData.phoneNumber());
+                InputValidator.serializeSave("Client - edit: firstName", currClient.getFirstName(), clientFormData.firstName());
+                InputValidator.serializeSave("Client - edit: lastName", currClient.getLastName(), clientFormData.lastName());
+                InputValidator.serializeSave("Client - edit: email", currClient.getEmail(), clientFormData.email());
+                InputValidator.serializeSave("Client - edit: phoneNumber", currClient.getPhoneNumber(), clientFormData.phoneNumber());
 
                 Client updatedClient = new Client(selectedClient.getId(), clientFormData.firstName(),
-                        clientFormData.lastName(), clientFormData.email(), clientFormData.phoneNumber(), SessionManager.getInstance().getLoggedUser());
+                        clientFormData.lastName(), clientFormData.email(), clientFormData.phoneNumber(), SessionManager.instance.getLoggedUser());
 
 
-                clientsDatabaseRepository.update(updatedClient, SessionManager.getInstance().getLoggedUser().getId());
+                clientsDatabaseRepository.update(updatedClient, SessionManager.instance.getLoggedUser().getId());
                 Message.showAlert(Alert.AlertType.INFORMATION, "Update success",
                         null, "Client updated successfully!");
             } else {
 
-                InputValidator.isDataEdited("Client - insert: firstName", "None", clientFormData.firstName());
-                InputValidator.isDataEdited("Client - insert: lastName", "None", clientFormData.lastName());
-                InputValidator.isDataEdited("Client - insert: email", "None", clientFormData.email());
-                InputValidator.isDataEdited("Client - insert: phoneNumber", "None", clientFormData.phoneNumber());
+                InputValidator.serializeSave("Client - insert: firstName", "None", clientFormData.firstName());
+                InputValidator.serializeSave("Client - insert: lastName", "None", clientFormData.lastName());
+                InputValidator.serializeSave("Client - insert: email", "None", clientFormData.email());
+                InputValidator.serializeSave("Client - insert: phoneNumber", "None", clientFormData.phoneNumber());
                 Client newClient = new Client(clientFormData.firstName(),
-                        clientFormData.lastName(), clientFormData.email(), clientFormData.phoneNumber(), SessionManager.getInstance().getLoggedUser());
+                        clientFormData.lastName(), clientFormData.email(), clientFormData.phoneNumber(), SessionManager.instance.getLoggedUser());
 
 
-                clientsDatabaseRepository.save(newClient, SessionManager.getInstance().getLoggedUser().getId());
+                clientsDatabaseRepository.save(newClient, SessionManager.instance.getLoggedUser().getId());
                 Message.showAlert(Alert.AlertType.INFORMATION, "Adding successful",
                         null, "Client added successfully!");
             }
@@ -75,16 +77,16 @@ public class UserDashboardClientsHelper {
                                              Client selectedClient,
                                              Runnable afterRecommedation) {
         if (selectedClient != null) {
-            InputValidator.isDataEdited("Referral - insert: client", "None", selectedClient.getFullName());
-            InputValidator.isDataEdited("Referral - insert: date", "None", LocalDateTime.now());
-            InputValidator.isDataEdited("Referral - insert: status", "None", ReferralStatus.PENDING);
+            InputValidator.serializeSave("Referral - insert: client", "None", selectedClient.getFullName());
+            InputValidator.serializeSave("Referral - insert: date", "None", LocalDateTime.now());
+            InputValidator.serializeSave("Referral - insert: status", "None", ReferralStatus.PENDING);
             Referral newReferral = new Referral(
-                    SessionManager.getInstance().getLoggedUser(), selectedClient,
+                    SessionManager.instance.getLoggedUser(), selectedClient,
                     LocalDateTime.now(), ReferralStatus.PENDING
             );
 
             selectedClient.setCurrentlyRecommended(true);
-            clientsDatabaseRepository.update(selectedClient, SessionManager.getInstance().getLoggedUser().getId());
+            clientsDatabaseRepository.update(selectedClient, SessionManager.instance.getLoggedUser().getId());
 
             referralDatabaseRepository.save(newReferral);
 
@@ -105,10 +107,10 @@ public class UserDashboardClientsHelper {
                 "Are you sure you want to delete client " + client.getFirstName() + "?"
         );
 
-        InputValidator.isDataEdited("Client - delete: firstName", client.getFirstName(), "none");
-        InputValidator.isDataEdited("Client - delete: lastName", client.getLastName(), "none");
-        InputValidator.isDataEdited("Client - delete: email", client.getEmail(), "none");
-        InputValidator.isDataEdited("Client - delete: phoneNumber", client.getPhoneNumber(), "none");
+        InputValidator.serializeSave("Client - delete: firstName", client.getFirstName(), "none");
+        InputValidator.serializeSave("Client - delete: lastName", client.getLastName(), "none");
+        InputValidator.serializeSave("Client - delete: email", client.getEmail(), "none");
+        InputValidator.serializeSave("Client - delete: phoneNumber", client.getPhoneNumber(), "none");
 
         if (confirmed) {
             clientDatabaseRepository.delete(client.getId());
@@ -120,9 +122,11 @@ public class UserDashboardClientsHelper {
     private static boolean validateForm(ReferredClientsFormData referredClientsFormData) {
         try {
             isFormEmpty(referredClientsFormData);
-            if (!referredClientsFormData.email().isEmpty()) {
+
+            if (!referredClientsFormData.email().isBlank()) {
                 InputValidator.emailValidator(referredClientsFormData.email(), "Invalid e-mail address!");
             }
+
             return true;
         } catch (InvalidEmailException e) {
             log.error(e.getMessage(), "E-mail address is invalid!");
@@ -132,15 +136,23 @@ public class UserDashboardClientsHelper {
         } catch (EmptyFieldsException e) {
             log.error(e.getMessage(), "Empty fields!");
             Message.showAlert(Alert.AlertType.ERROR, "Required fields are empty!",
-                    null, "All fields are required!");
+                    null, e.getMessage());
             return false;
         }
     }
 
     private static void isFormEmpty(ReferredClientsFormData formData) {
-        if (formData.firstName().isEmpty() || formData.lastName().isEmpty() || formData.email().isEmpty()
-                || formData.phoneNumber().isEmpty()) {
-            throw new EmptyFieldsException("All fields are required!");
+        List<PairData<String, String>> fields = List.of(
+                new PairData<>("First Name", formData.firstName()),
+                new PairData<>("Last Name", formData.lastName()),
+                new PairData<>("Email", formData.email()),
+                new PairData<>("Phone Number", formData.phoneNumber())
+        );
+
+        for (PairData<String, String> field : fields) {
+            if (field.getValue() == null || field.getValue().isBlank()) {
+                throw new EmptyFieldsException(field.getKey() + " is required!");
+            }
         }
     }
 }

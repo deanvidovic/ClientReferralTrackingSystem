@@ -116,7 +116,7 @@ public class UserDashboardReferralsController {
     }
 
     private void showReferrals() {
-        Set<Referral> referrals = referralDatabaseRepository.findAllByReferral(SessionManager.getInstance().getLoggedUser().getId());
+        Set<Referral> referrals = referralDatabaseRepository.findAllByReferral(SessionManager.instance.getLoggedUser().getId());
 
         List<Referral> referralList = referrals.stream()
                 .sorted(Comparator.comparing(Referral::getRefferalDate))
@@ -127,7 +127,7 @@ public class UserDashboardReferralsController {
 
     public void filterReferrals() {
         List<Referral> referralList = referralDatabaseRepository
-                .findAllByReferral(SessionManager.getInstance().getLoggedUser().getId())
+                .findAllByReferral(SessionManager.instance.getLoggedUser().getId())
                 .stream()
                 .toList();
 

@@ -28,10 +28,10 @@ public class UserDashboardReferralsHelper {
                     "Are you sure you want to remove recommendation?"
             );
 
-            InputValidator.isDataEdited("Referral - delete: user", selectedReferral.getRefferer().getUserFullName(), "none");
-            InputValidator.isDataEdited("Referral - delete: client", selectedReferral.getRefferedClient().getFullName(), "none");
-            InputValidator.isDataEdited("Referral - delete: referralDate", selectedReferral.getRefferalDate().toLocalDate(), "none");
-            InputValidator.isDataEdited("Referral - delete: phoneNumber", selectedReferral.getReferralStatus(), "none");
+            InputValidator.serializeSave("Referral - delete: user", selectedReferral.getRefferer().getUserFullName(), "none");
+            InputValidator.serializeSave("Referral - delete: client", selectedReferral.getRefferedClient().getFullName(), "none");
+            InputValidator.serializeSave("Referral - delete: referralDate", selectedReferral.getRefferalDate().toLocalDate(), "none");
+            InputValidator.serializeSave("Referral - delete: phoneNumber", selectedReferral.getReferralStatus(), "none");
 
             if (selectedReferral.getReferralStatus() == ReferralStatus.APPROVED
                     || selectedReferral.getReferralStatus() == ReferralStatus.REJECTED) {
@@ -48,7 +48,7 @@ public class UserDashboardReferralsHelper {
 
                 if (referredClient.isPresent()) {
                     referredClient.get().setCurrentlyRecommended(false);
-                    clientsDatabaseRepository.update(referredClient.get(), SessionManager.getInstance().getLoggedUser().getId());
+                    clientsDatabaseRepository.update(referredClient.get(), SessionManager.instance.getLoggedUser().getId());
                     referralDatabaseRepository.delete(selectedReferral.getId());
                 }
 

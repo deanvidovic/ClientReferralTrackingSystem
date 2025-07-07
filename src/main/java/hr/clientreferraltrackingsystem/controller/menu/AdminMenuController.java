@@ -17,17 +17,17 @@ public class AdminMenuController {
 
     public void initialize() {
         Map<String, String> adminInfo = new HashMap<>();
-        adminInfo.put("firstName", SessionManager.getInstance().getLoggedUser().getFirstName());
-        adminInfo.put("lastName", SessionManager.getInstance().getLoggedUser().getLastName());
-        adminNameLabel.setText(SessionManager.getInstance().getLoggedUser().getFirstName()
-                + " " + SessionManager.getInstance().getLoggedUser().getLastName());
+        adminInfo.put("firstName", SessionManager.instance.getLoggedUser().getFirstName());
+        adminInfo.put("lastName", SessionManager.instance.getLoggedUser().getLastName());
+        adminNameLabel.setText(SessionManager.instance.getLoggedUser().getFirstName()
+                + " " + SessionManager.instance.getLoggedUser().getLastName());
     }
 
     public void logOut() {
         boolean confirmed = Message.showConfirmation("Log out", "Please confirm", "Are you sure you want to log out?");
 
         if (confirmed) {
-            SessionManager.getInstance().setLoggedUser(null);
+            SessionManager.instance.setLoggedUser(null);
             SceneLoader.switchToScene("/hr/clientreferraltrackingsystem/login/loginView.fxml");
         }
     }

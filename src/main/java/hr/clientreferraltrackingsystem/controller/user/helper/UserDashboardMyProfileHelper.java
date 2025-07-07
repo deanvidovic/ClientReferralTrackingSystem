@@ -21,7 +21,7 @@ public class UserDashboardMyProfileHelper {
     private UserDashboardMyProfileHelper() {}
 
     public static void changeDataHandle(UserFormData userFormData, UserDatabaseRepository userDatabaseRepository, Runnable after) {
-        User user = SessionManager.getInstance().getLoggedUser();
+        User user = SessionManager.instance.getLoggedUser();
 
         boolean confirmed = Message.showConfirmation(
                 "Confirm Delete",
@@ -44,7 +44,7 @@ public class UserDashboardMyProfileHelper {
 
         User updatedUser = userBuilder.build();
         userDatabaseRepository.update(updatedUser);
-        SessionManager.getInstance().setLoggedUser(updatedUser);
+        SessionManager.instance.setLoggedUser(updatedUser);
 
         Message.showAlert(Alert.AlertType.CONFIRMATION, "Success!", null, "Successfully changed your data!");
     }

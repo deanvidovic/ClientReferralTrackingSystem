@@ -111,7 +111,7 @@ public class UserDashboardClientsController {
 
     public void filterClients() {
         List<Client> clientsList = clientsDatabaseRepository
-                .findAllByCreatedUser(SessionManager.getInstance().getLoggedUser().getId())
+                .findAllByCreatedUser(SessionManager.instance.getLoggedUser().getId())
                 .stream()
                 .filter(client -> Boolean.FALSE.equals(client.getCurrentlyRecommended()))
                 .toList();
@@ -200,7 +200,7 @@ public class UserDashboardClientsController {
     }
 
     private void showClients() {
-        Set<Client> clients = clientsDatabaseRepository.findAllByCreatedUser(SessionManager.getInstance().getLoggedUser().getId());
+        Set<Client> clients = clientsDatabaseRepository.findAllByCreatedUser(SessionManager.instance.getLoggedUser().getId());
         List<Client> clientsList = clients.stream()
                 .filter(client -> Boolean.FALSE.equals(client.getCurrentlyRecommended()))
                 .sorted(Comparator.comparing(Client::getLastName))
