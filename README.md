@@ -10,8 +10,12 @@ Administrators can track referrals, manage rewards, and analyze performance in o
 - [Features](#features)  
 - [Tech Stack](#tech-stack)  
 - [Installation & Setup](#installation--setup)  
+- [Database Configuration](#database-configuration)  
 - [Usage](#usage)  
-- [Screenshots](#screenshots) 
+- [Screenshots](#screenshots)  
+- [Contributing](#contributing)  
+- [Roadmap](#roadmap)  
+- [License](#license)  
 
 ---
 
@@ -39,18 +43,21 @@ Administrators can track referrals, manage rewards, and analyze performance in o
 
 ## Installation & Setup
 
-1. Clone the repository:
+1. Clone the repository:  
    ```bash
    git clone https://github.com/deanvidovic/ClientReferralTrackingSystem.git
    cd ClientReferralTrackingSystem
-2. Create the following file:
+
+2. Place the configuration files directly in the project root folder.
+
+3. Create the following file:
    - `database.properties`
+   
       ```bash
       databaseUrl = jdbc:h2:tcp://localhost/~/yourDatabaseName
       username = yourUsername
       password = yourPassword
-3. Initialize the database by running the SQL script:  
-- `database.sql`
+4. Initialize the database by running the SQL script:  `database.sql`
 
 ---
 
@@ -64,4 +71,21 @@ Administrators can track referrals, manage rewards, and analyze performance in o
 ---
 
 ## Screenshots
+### Login screen
+
+<img width="1946" height="1089" alt="image" src="https://github.com/user-attachments/assets/4d879868-af45-4450-bf63-4cb327016cd6" />
+
+---
+
+### User dashboard
+
+<img width="1947" height="1091" alt="image" src="https://github.com/user-attachments/assets/dcd9ee69-02d2-44ae-b1d6-2f108398cdce" />
+
+---
+
+### Admin dashboard
+
+<img width="1942" height="1086" alt="image" src="https://github.com/user-attachments/assets/0087c9b8-0421-4146-830a-f60dc4f0e3fd" />
+
+
 
