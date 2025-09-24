@@ -10,12 +10,8 @@ Administrators can track referrals, manage rewards, and analyze performance in o
 - [Features](#features)  
 - [Tech Stack](#tech-stack)  
 - [Installation & Setup](#installation--setup)  
-- [Database Configuration](#database-configuration)  
 - [Usage](#usage)  
 - [Screenshots](#screenshots)  
-- [Contributing](#contributing)  
-- [Roadmap](#roadmap)  
-- [License](#license)  
 
 ---
 
